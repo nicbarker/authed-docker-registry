@@ -1,0 +1,1 @@
+# authed-docker-registry
