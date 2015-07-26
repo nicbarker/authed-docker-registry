@@ -1,13 +1,15 @@
 nginx:
-  build: .
-  dockerfile: ./docker/Dockerfile-nginx
+  build: "nginx"
   ports:
-    - "80:80"
     - "5000:5000"
   links:
-    - registry:registry
-
-registry:
-  image: registry:2
+    - registryv1:registryv1
+    - registryv2:registryv2
+registryv1:
+  image: registry
+  ports:
+    - "5000"
+registryv2:
+  build: "../../"
   ports:
     - "5000"
