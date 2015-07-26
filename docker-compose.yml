@@ -1,10 +1,14 @@
 nginx:
-  build: "nginx"
+  restart: always
+  build: .
+  dockerfile: ./nginx/Dockerfile
   ports:
     - "5000:5000"
   links:
     - registry:registry
+
 registry:
-  build: "."
+  restart: always
+  build: .
   ports:
     - "5000"
