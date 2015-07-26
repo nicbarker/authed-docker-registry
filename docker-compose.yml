@@ -8,7 +8,11 @@ nginx:
     - registry:registry
 
 registry:
+  image: registry:2
   restart: always
-  build: .
+  environment:
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+  volumes:
+   - ./registry-data:/var/lib/registry
   ports:
     - "5000"
